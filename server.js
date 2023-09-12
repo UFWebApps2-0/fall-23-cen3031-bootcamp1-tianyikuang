@@ -33,7 +33,7 @@ var requestHandler = function(request, response) {
 
 
   /*
-    Your request handler should send listingData in the JSON format as a response if a GET request 
+    Your request handler should send listingData  the JSON format as a response if a GET request 
     is sent to the '/listings' path. Otherwise, it should send a 404 error. 
 
     HINT: Explore the request object and its properties 
