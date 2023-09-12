@@ -9,7 +9,28 @@ var requestHandler = function(request, response) {
   /*Investigate the request object. 
     You will need to use several of its properties: url and method
   */
-  //console.log(request);
+ 
+
+    if (request.url == '/listings' && request.method == "GET") {
+        response.writeHead(200, { "Content-Type": "JSON" });
+        response.write(listingData);
+        response.end();
+
+    }
+    else {
+        response.writeHead(404, { "Content-Type": "text/html" });
+        response.write("Bad Gateway Error, 404 not found");
+        response.end();
+
+    }
+
+
+
+
+
+
+
+
 
   /*
     Your request handler should send listingData in the JSON format as a response if a GET request 
@@ -31,30 +52,35 @@ var requestHandler = function(request, response) {
     */
 };
 
-fs.readFile('listings.json', 'utf8', function(err, data) {
-  /*
-    This callback function should save the data in the listingData variable, 
-    then start the server. 
-
-    HINT: Check out this resource on fs.readFile
-    //https://nodejs.org/api/fs.html#fs_fs_readfile_path_options_callback
-
-    HINT: Read up on JSON parsing Node.js
-    http://stackoverflow.com/questions/17251553/nodejs-request-object-documentation
-   */
+fs.readFile('listings.json', 'utf8', function (err, data) {
+    /*
+      This callback function should save the data in the listingData variable, 
+      then start the server. 
+  
+      HINT: Check out this resource on fs.readFile
+      //https://nodejs.org/api/fs.html#fs_fs_readfile_path_options_callback
+  
+      HINT: Read up on JSON parsing Node.js
+      http://stackoverflow.com/questions/17251553/nodejs-request-object-documentation
+     */
 
     //Check for errors
     /*this resource gives you an idea of the general format err objects and Throwing an existing object.
     https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/throw#throwing_an_existing_object
    */
-  
 
-   //Save the data in the listingData variable already defined
-  
 
-  //Creates the server
-  
-  //Start the server
+    //Save the data in the listingData variable already defined
 
+    listingData =JSON.stringify( data);
+    //Creates the server
+
+    server = http.createServer(requestHandler);
+    //Start the server
+    server.listen(port, function (){
+        console.log("server is working");
+    });
+
+    console.log("The website is operationing");
 
 });
