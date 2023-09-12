@@ -57,7 +57,7 @@ fs.readFile('listings.json', 'utf8', function (err, data) {
       This callback function should save the data in the listingData variable, 
       then start the server. 
   
-      HINT: Check out this resource on fs.readFile
+     
       //https://nodejs.org/api/fs.html#fs_fs_readfile_path_options_callback
   
       HINT: Read up on JSON parsing Node.js
